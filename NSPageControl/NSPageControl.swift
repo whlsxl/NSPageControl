@@ -8,7 +8,7 @@
 
 import Cocoa
 
-public class NSPageControl: NSView {
+open class NSPageControl: NSView {
 
     public var numberOfPages: Int   = 0
     public var currentPage: Int     = 0 {
@@ -32,8 +32,7 @@ public class NSPageControl: NSView {
     private var dotLayers: [CAShapeLayer] = []
 
     // MARK: - lifecycle
-
-    public override func draw(_ dirtyRect: NSRect) {
+    open override func draw(_ dirtyRect: NSRect) {
         super.draw(dirtyRect)
 
         let dotWidthSum: CGFloat          = dotLength * CGFloat(numberOfPages)
@@ -92,7 +91,7 @@ public class NSPageControl: NSView {
         let fillColorAnimation: CABasicAnimation = CABasicAnimation(keyPath: "fillColor")
         fillColorAnimation.toValue    = color.cgColor
         fillColorAnimation.duration   = animationDuration
-        fillColorAnimation.fillMode = kCAFillModeForwards
+        fillColorAnimation.fillMode = CAMediaTimingFillMode.forwards
         fillColorAnimation.isRemovedOnCompletion = false
         return fillColorAnimation
     }
